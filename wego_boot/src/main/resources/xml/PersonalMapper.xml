@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.wego.dao.mapper.PersonalMapper">
+  <resultMap id="BaseResultMap" type="com.boot.wego.entity.Personal">
+    <id column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="work" jdbcType="VARCHAR" property="work" />
+    <result column="birthland" jdbcType="VARCHAR" property="birthland" />
+    <result column="locus" jdbcType="VARCHAR" property="locus" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="autograph" jdbcType="VARCHAR" property="autograph" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    name, sex, idcard, mobile, email, work, birthland, locus, company, school, autograph
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from personal
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from personal
+    where name = #{name,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.boot.wego.entity.Personal">
+    insert into personal (name, sex, idcard, 
+      mobile, email, work, 
+      birthland, locus, company, 
+      school, autograph)
+    values (#{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{work,jdbcType=VARCHAR}, 
+      #{birthland,jdbcType=VARCHAR}, #{locus,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{school,jdbcType=VARCHAR}, #{autograph,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.boot.wego.entity.Personal">
+    insert into personal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="idcard != null">
+        idcard,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="work != null">
+        work,
+      </if>
+      <if test="birthland != null">
+        birthland,
+      </if>
+      <if test="locus != null">
+        locus,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="autograph != null">
+        autograph,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="work != null">
+        #{work,jdbcType=VARCHAR},
+      </if>
+      <if test="birthland != null">
+        #{birthland,jdbcType=VARCHAR},
+      </if>
+      <if test="locus != null">
+        #{locus,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="autograph != null">
+        #{autograph,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.boot.wego.entity.Personal">
+    update personal
+    <set>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="work != null">
+        work = #{work,jdbcType=VARCHAR},
+      </if>
+      <if test="birthland != null">
+        birthland = #{birthland,jdbcType=VARCHAR},
+      </if>
+      <if test="locus != null">
+        locus = #{locus,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="autograph != null">
+        autograph = #{autograph,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where name = #{name,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.boot.wego.entity.Personal">
+    update personal
+    set sex = #{sex,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      work = #{work,jdbcType=VARCHAR},
+      birthland = #{birthland,jdbcType=VARCHAR},
+      locus = #{locus,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      autograph = #{autograph,jdbcType=VARCHAR}
+    where name = #{name,jdbcType=VARCHAR}
+  </update>
+</mapper>
